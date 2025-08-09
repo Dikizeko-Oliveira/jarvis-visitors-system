@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Rooms {
+  id              String     @id @default(uuid())
+  name            String
+  active_visitors Int?       @default(0)
+  visitors        Int?       @default(0)
+  is_available    Boolean    @default(true)
+  created_at      DateTime   @default(now())
+  Visitors        Visitors[]
+  Sessions        Sessions[]
+
+  @@map("rooms")
+}
+
+model Visitors {
+  id         String     @id @default(uuid())
+  name       String
+  cpf        String
+  email      String
+  birthdate  String
+  room_id    String?
+  created_at DateTime   @default(now())
+  room       Rooms?     @relation(fields: [room_id], references: [id])
+  Sessions   Sessions[]
+
+  @@map("visitors")
+}
+
+model Sessions {
+  id         String    @id @default(uuid())
+  visitor_id String
+  room_id    String
+  entry_date DateTime  @default(now())
+  exit_date  DateTime?
+  room       Rooms?    @relation(fields: [room_id], references: [id])
+  visitor    Visitors? @relation(fields: [visitor_id], references: [id])
+
+  @@map("sessions")
+}
+
+model Logs {
+  id    String @id @default(uuid())
+  topic String
+
+  created_at DateTime @default(now())
+
+  @@map("logs")
+}
