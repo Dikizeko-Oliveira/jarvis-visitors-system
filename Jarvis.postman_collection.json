@@ -1,0 +1,472 @@
+{
+	"info": {
+		"_postman_id": "db66747a-020d-46b2-9c89-98570f47dbfe",
+		"name": "Teste",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17121524",
+		"_collection_link": "https://gold-meteor-249927.postman.co/workspace/Team-Workspace~5cfb369f-8ffe-415d-80eb-a9db7852c119/collection/17121524-db66747a-020d-46b2-9c89-98570f47dbfe?action=share&source=collection_link&creator=17121524"
+	},
+	"item": [
+		{
+			"name": "Rooms",
+			"item": [
+				{
+					"name": "Criar Sala",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Sala 03 B\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/rooms/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"rooms",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Sala",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Sala 02\",\n    \"room_id\": \"897047b7-94b2-4b02-a7ad-3ad6ab2c3a1a\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/rooms/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"rooms",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Salas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/rooms/list-all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"rooms",
+								"list-all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Sala pelo Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/rooms/by-id/897047b7-94b2-4b02-a7ad-3ad6ab2c3a1a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"rooms",
+								"by-id",
+								"897047b7-94b2-4b02-a7ad-3ad6ab2c3a1a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Sala pelo nome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/rooms/by-name?name=Sala 01",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"rooms",
+								"by-name"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Sala 01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Salas Ocupadas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/rooms/occupied",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"rooms",
+								"occupied"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Visitors",
+			"item": [
+				{
+					"name": "Criar Visitante",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Manuel Costa\",\n    \"cpf\": \"201.543.953-18\",\n    \"email\": \"exampple@google.com\", \n    \"birthdate\": \"12/10/2001\",\n    \"room_id\": \"897047b7-94b2-4b02-a7ad-3ad6ab2c3a1a\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/visitors/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"visitors",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Visitantes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/visitors/list-all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"visitors",
+								"list-all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Visitantes pelo CPF",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/visitors/by-cpf?cpf=234.543.953-88",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"visitors",
+								"by-cpf"
+							],
+							"query": [
+								{
+									"key": "cpf",
+									"value": "234.543.953-88"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sessions",
+			"item": [
+				{
+					"name": "Criar sessão",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"visitor_id\": \"0fa21b23-d94a-4467-9375-40e11228f459\",\n    \"room_id\": \"897047b7-94b2-4b02-a7ad-3ad6ab2c3a1a\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/sessions/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"sessions",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Finalizar sessão",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session_id\": \"1668936f-4d17-4ed2-bf81-c2b94ed55f28\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/sessions/finish",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"sessions",
+								"finish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar sessões ativas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session_id\": \"e3de51d2-4531-4a2b-9d03-99550cb46d7e\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/sessions/list-active",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"sessions",
+								"list-active"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar histórico  de sessões",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session_id\": \"e3de51d2-4531-4a2b-9d03-99550cb46d7e\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/sessions/list-all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"sessions",
+								"list-all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Logs",
+			"item": [
+				{
+					"name": "Criar Log",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"topic\": \"Teste\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/logs/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"logs",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar logs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/logs/list-all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"logs",
+								"list-all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Lista de espera",
+			"item": [
+				{
+					"name": "Listar de espera",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/on-hold/list-all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"on-hold",
+								"list-all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dashboard",
+			"item": [
+				{
+					"name": "Overview",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/overview/list-all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"overview",
+								"list-all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
