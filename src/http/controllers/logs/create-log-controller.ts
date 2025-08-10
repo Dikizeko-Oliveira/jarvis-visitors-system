@@ -1,32 +1,25 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import { z } from "zod";
 
-import { makeCreateRoomService } from "@/instancies/rooms/make-create-room-service";
 import { AlreadyExistsError } from "@/services/errors/already-exists-error";
 import { makeCreateLogService } from "@/instancies/logs/make-create-log-service";
 
-export async function createRoomController(
+export async function createLogController(
   request: FastifyRequest,
   reply: FastifyReply
 ) {
   try {
     const registerBodySchema = z.object({
-      name: z.string(),
+      topic: z.string(),
     });
 
-    const { name } = registerBodySchema.parse(request.body);
-
-    const createRoomsService = makeCreateRoomService();
-
-    const room = await createRoomsService.execute({ name });
+    const { topic } = registerBodySchema.parse(request.body);
 
     const createLogService = makeCreateLogService();
 
-    await createLogService.execute({
-      topic: `Nova sala criada - ${name}.`,
-    });
+    const log = await createLogService.execute({ topic });
 
-    return reply.status(200).send(room);
+    return reply.status(200).send(log);
   } catch (error) {
     if (error instanceof AlreadyExistsError) {
       return reply.status(409).send({ message: error.message });

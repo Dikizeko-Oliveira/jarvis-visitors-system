@@ -5,6 +5,11 @@ import { ZodError } from "zod";
 
 import { env } from "./env";
 import { roomsRoutes } from "./http/controllers/rooms/routes";
+import { visitorsRoutes } from "./http/controllers/visitors/routes";
+import { sessionsRoutes } from "./http/controllers/sessions/routes";
+import { logsRoutes } from "./http/controllers/logs/routes";
+import { overviewRoutes } from "./http/controllers/overview/routes";
+import { onHoldRoutes } from "./http/controllers/on-hold/routes";
 
 export const app = fastify();
 
@@ -23,6 +28,11 @@ app.register(cors, {
 });
 
 app.register(roomsRoutes);
+app.register(visitorsRoutes);
+app.register(sessionsRoutes);
+app.register(logsRoutes);
+app.register(overviewRoutes);
+app.register(onHoldRoutes);
 
 app.setErrorHandler((error, _, reply) => {
   if (error instanceof ZodError) {

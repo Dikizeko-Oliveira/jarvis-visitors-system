@@ -23,6 +23,22 @@ export class PrismaRoomsRepository implements RoomsRepository {
     return question;
   }
 
+  async listAvailable() {
+    const question = await prisma.rooms.findMany({
+      where: { is_available: true },
+    });
+
+    return question;
+  }
+
+  async listUnavailable() {
+    const question = await prisma.rooms.findMany({
+      where: { is_available: false },
+    });
+
+    return question;
+  }
+
   async findByName(name: string) {
     const question = await prisma.rooms.findFirst({ where: { name } });
 

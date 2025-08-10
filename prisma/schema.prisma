@@ -19,6 +19,7 @@ model Rooms {
   created_at      DateTime   @default(now())
   Visitors        Visitors[]
   Sessions        Sessions[]
+  OnHold          OnHold[]
 
   @@map("rooms")
 }
@@ -27,12 +28,14 @@ model Visitors {
   id         String     @id @default(uuid())
   name       String
   cpf        String
-  email      String
-  birthdate  String
-  room_id    String?
+  email      String?
+  birthdate  String?
+  is_active  Boolean    @default(false)
+  room_id    String
   created_at DateTime   @default(now())
   room       Rooms?     @relation(fields: [room_id], references: [id])
   Sessions   Sessions[]
+  OnHold     OnHold[]
 
   @@map("visitors")
 }
@@ -41,12 +44,26 @@ model Sessions {
   id         String    @id @default(uuid())
   visitor_id String
   room_id    String
+  is_active  Boolean   @default(true)
   entry_date DateTime  @default(now())
   exit_date  DateTime?
   room       Rooms?    @relation(fields: [room_id], references: [id])
   visitor    Visitors? @relation(fields: [visitor_id], references: [id])
 
   @@map("sessions")
+}
+
+model OnHold {
+  id         String @id @default(uuid())
+  visitor_id String
+  room_id    String
+
+  created_at DateTime  @default(now())
+  exit_date  DateTime?
+  room       Rooms?    @relation(fields: [room_id], references: [id])
+  visitor    Visitors? @relation(fields: [visitor_id], references: [id])
+
+  @@map("on_hold")
 }
 
 model Logs {
@@ -56,4 +73,16 @@ model Logs {
   created_at DateTime @default(now())
 
   @@map("logs")
+}
+
+model Users {
+  id            String @id @default(uuid())
+  name          String
+  email         String
+  role          String @default("member")
+  password_hash String
+
+  created_at DateTime @default(now())
+
+  @@map("users")
 }
